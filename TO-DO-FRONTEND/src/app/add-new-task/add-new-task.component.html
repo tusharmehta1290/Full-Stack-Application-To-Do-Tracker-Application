@@ -1,0 +1,79 @@
+<form id="container" (ngSubmit)="onSubmit(newTaskForm)" #newTaskForm="ngForm">
+    <div id="title" mat-dialog-title>Add A New ToDo</div>
+
+    <div mat-dialog-content class="content">
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Task Name</mat-label>
+                <input matInput type="text" placeholder="Ex. Coding" [(ngModel)]="newTask.taskName" name="taskName" #taskName="ngModel" minlength="3" maxlength="20" required>
+
+                <mat-error *ngIf="taskName.errors?.['required'] && taskName.touched">
+                    TaskName is required
+                </mat-error>
+
+                <mat-error *ngIf="taskName.errors?.['minlength'] && taskName.touched">
+                    TaskName minimum length is {{taskName.errors?.['minlength']?.requiredLength}}
+                </mat-error>
+
+                <mat-error  *ngIf="taskName.errors?.['maxlength'] && taskName.touched">
+                    TaskName maximum length is {{ taskName.errors?.['maxlength']?.requiredLength}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Task Description</mat-label>
+                <input matInput type="text" placeholder="Ex. I need to complete the frontend" [(ngModel)]="newTask.taskDescription" name="taskDescription" #taskDescription="ngModel" minlength="5" maxlength="60" required>
+
+                <mat-error *ngIf="taskDescription.errors?.['required'] && taskDescription.touched">
+                    TaskDescription is required
+                </mat-error>
+
+                <mat-error *ngIf="taskDescription.errors?.['minlength'] && taskDescription.touched">
+                    TaskDescription minimum length is {{taskDescription.errors?.['minlength']?.requiredLength}}
+                </mat-error>
+
+                <mat-error *ngIf="taskDescription.errors?.['maxlength'] && taskDescription.touched">
+                    TaskDescription minimum length is {{taskDescription.errors?.['maxlength']?.requiredLength}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Completion Date</mat-label>
+                <input matInput [matDatepicker]="picker"[min]="minDate" [(ngModel)]="newTask.completionDate" name="completionDate" #completionDate="ngModel" required>
+
+                <mat-error *ngIf="completionDate.errors?.['required'] && completionDate.touched">
+                    Completion Date is required
+                </mat-error>
+
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+              <mat-label>Priority Level</mat-label>
+              <mat-select id="dropdownsymbol" [(ngModel)]="newTask.priority" name="priority" #priority="ngModel">
+                <mat-option value="Low">Low Priority</mat-option>
+                <mat-option value="Medium">Medium Priority</mat-option>
+                <mat-option value="High">High Priority</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+
+    </div>
+
+    <div mat-dialog-actions class="actions">
+        <button id="cancelbtn" mat-raised-button color="warn" (click)="closeform()">Cancel</button>
+        <button id="submitbtn" mat-raised-button color="primary" type="submit" [disabled]="(newTaskForm.invalid)">Save</button>
+    </div>
+
+
+</form>

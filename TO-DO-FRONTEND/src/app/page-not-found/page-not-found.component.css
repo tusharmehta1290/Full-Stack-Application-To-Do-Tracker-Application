@@ -1,0 +1,55 @@
+#not-found-card {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
+}
+
+.not-found-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.not-found-image {
+    width: 300px; 
+    margin-right: 10px;
+}
+
+.not-found-title {
+    font-size: 40px;
+    color: #ff4d4d; 
+    line-height: 150%;
+}
+
+.not-found-subtitle {
+    font-size: 30px;
+    margin-top: -10px;
+    color: #333; 
+}
+
+.not-found-message {
+    font-size: 17px;
+    color: #666;
+}
+
+mat-card-actions {
+    margin-top: 20px;
+}
+
+mat-card-actions a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #4285f4; 
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 220px;
+}
+
+mat-card-actions a:hover {
+    text-decoration: underline;
+}

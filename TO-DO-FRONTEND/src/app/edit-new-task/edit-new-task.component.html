@@ -1,0 +1,93 @@
+<form id="container" (ngSubmit)="onSubmit(edittaskform)" #edittaskform="ngForm">
+    <div id="title" mat-dialog-title>Edit Task</div>
+
+    <div mat-dialog-content class="content">
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Task Name</mat-label>
+                <input matInput type="text" placeholder="Ex. Coding" [(ngModel)]="editTask.taskName" name="taskName"
+                    #edittaskname="ngModel" minlength="5" maxlength="30" required>
+
+                <mat-error *ngIf="edittaskname.errors?.['required'] && edittaskname.touched">
+                    TaskName is required
+                </mat-error>
+
+                <mat-error *ngIf="edittaskname.errors?.['minlength'] && edittaskname.touched">
+                    TaskName minimum length is {{edittaskname.errors?.['minlength']?.requiredLength}}
+                </mat-error>
+
+                <mat-error *ngIf="edittaskname.errors?.['maxlength'] && edittaskname.touched">
+                    TaskName maximum length is {{ edittaskname.errors?.['maxlength']?.requiredLength}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Task Description</mat-label>
+                <input matInput type="text" placeholder="Ex. I need to complete the frontend"
+                    [(ngModel)]="editTask.taskDescription" name="etDesc" #edittaskDescription="ngModel" minlength="5"
+                    maxlength="75" required>
+
+                <mat-error *ngIf="edittaskDescription.errors?.['required'] && edittaskDescription.touched">
+                    TaskDescription is required
+                </mat-error>
+
+                <mat-error *ngIf="edittaskDescription.errors?.['minlength'] && edittaskDescription.touched">
+                    TaskDescription minimum length is {{edittaskDescription.errors?.['minlength']?.requiredLength}}
+                </mat-error>
+
+                <mat-error *ngIf="edittaskDescription.errors?.['maxlength'] && edittaskDescription.touched">
+                    TaskDescription minimum length is {{edittaskDescription.errors?.['maxlength']?.requiredLength}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Completion Date</mat-label>
+                <input matInput [matDatepicker]="picker" [min]="minDate" [(ngModel)]="editTask.completionDate"
+                    name="ecDate" #editcompletionDate="ngModel" required>
+
+                <mat-error *ngIf="editcompletionDate.errors?.['required'] && editcompletionDate.touched">
+                    Completion Date is required
+                </mat-error>
+
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field>
+            <mat-label>Priority Level</mat-label>
+            <mat-select id="dropdownsymbol" [(ngModel)]="editTask.priority" name="etpLevel" #editpriority="ngModel">
+                <mat-option value="Low">Low Priority</mat-option>
+                <mat-option value="Medium">Medium Priority</mat-option>
+                <mat-option value="High">High Priority</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Completion Status</mat-label>
+                <mat-select id="dropdownsymbol" [(ngModel)]="editTask.isCompleted" name="etisComp"
+                    #etiscompleted="ngModel">
+                    <mat-option value="Yes">Yes</mat-option>
+                    <mat-option value="No">No</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+    </div>
+
+    <div mat-dialog-actions class="actions">
+        <button id="cancelbtn" mat-raised-button color="warn" (click)="closeform()">Cancel</button>
+        <button id="submitbtn" mat-raised-button color="primary" type="submit" [disabled]="(edittaskform.invalid)"
+            (click)="SubmitEditTask()">Save</button>
+    </div>
+
+</form>

@@ -1,0 +1,100 @@
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#heading{
+    margin-top: 2vh;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px; 
+    
+}
+
+#signout-button{
+    width: 3vw;
+    height: 6vh;
+}
+
+#goto{
+    width: 3vw;
+    height: 6vh;
+}
+
+#bt1{
+    font-size: 20px;
+}
+
+#bt2{
+    font-size: 20px;
+}
+
+.container{
+    border: 1px solid black;
+    width: fit-content;
+    margin-top: 2vh;
+    margin-left: 37vw;
+}
+
+.table-container {
+    display: inline;
+}
+
+mat-table {
+    border-collapse: collapse;
+}
+
+
+.column-header {
+    width: 40%;
+    text-align: center;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+.table-row {
+    border: 1px solid black;
+    width: 40%;
+}
+
+#values{
+    text-align: center;
+    border: 1px solid black;
+}
+
+.delete-button {
+    color: red;
+}
+
+.paginator {
+    margin-top: 20px;
+    display: flex;
+    margin-left: 38vw;
+    width: 30%;
+    font-size: 14px;
+}
+
+#adminimg{
+    position: fixed;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 53px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom :0;
+}

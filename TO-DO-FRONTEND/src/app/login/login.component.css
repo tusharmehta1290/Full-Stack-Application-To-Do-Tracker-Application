@@ -1,0 +1,59 @@
+.login-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    margin-top: -40px;
+}
+
+#heading {
+    font-size: 32px;
+}
+
+#image-area {
+    text-align: center;
+}
+
+.logo {
+    width: 80%; 
+    max-width: 100%;
+    height: auto;
+    margin-top: -20px;
+}
+
+.login-form {
+    padding: 20px;
+}
+
+.login-form span {
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.full-width {
+    width: 55%;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+#loginbtn {
+    width: 146px;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+#linktosignup {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#loginbtn:hover {
+    background-color: #1976D2;
+    color: #fff;
+}

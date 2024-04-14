@@ -1,0 +1,23 @@
+<header>
+    <h1>Welcome to Secure Access Portal</h1>
+    <p>Manage your permissions with ease.</p>
+</header>
+
+<div class="form-container">
+    <h3>If you are an Admin, Enter your Admin Code</h3>
+    <mat-form-field appearance="outline">
+        <mat-label>Enter Admin Code</mat-label>
+        <input matInput name="admincode" [(ngModel)]="admincode" placeholder="Admin Code">
+    </mat-form-field>
+    <div  *ngIf="adminCodeInvalid" class="error-message" >
+        Invalid Admin Code. Please Enter the correct Admin Code.
+    </div>
+    <button mat-button color="primary" class="submit-button" (click)="validateAdminCode()">Submit</button>
+    <h3>If you are a Visitor, <a routerLink="">Click Here</a></h3>
+</div>
+
+
+<footer>
+    <p id="footer-p">&copy; 2024 Secure Access System. All rights reserved.</p>
+    <p>Contact us at: todotracker.com</p>
+</footer>

@@ -1,0 +1,49 @@
+<header>
+    <h1 id="heading">Welcome to the Admin Panel</h1>
+    <div class="header-buttons">
+        <button id="signout-button" mat-fab color="accent" aria-label="Sign Out">
+            <mat-icon id="bt1">logout</mat-icon>
+        </button>
+        <button routerLink="/home" id="goto" mat-fab color="accent" aria-label="Go to Home">
+            <mat-icon id="bt2">arrow_forward_ios</mat-icon>
+        </button>
+    </div>
+</header>
+
+<div class="container">
+    <table mat-table class="table-container" [dataSource]="pageSlice" custom-table>
+
+        <!-- Email Id Column -->
+        <ng-container  matColumnDef="EmailId">
+            <th mat-header-cell *matHeaderCellDef  class="column-header">Email Id</th>
+            <td id="values"  mat-cell *matCellDef="let element">{{element.emailId}}</td>
+        </ng-container>
+
+        <!-- Delete Button Column -->
+        <ng-container matColumnDef="Button">
+            <th mat-header-cell *matHeaderCellDef class="column-header">Delete Button</th>
+            <td id="values" mat-cell *matCellDef="let element">
+                <button mat-icon-button class="delete-button" (click)="DeleteThisUserAdmin(element.emailId)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Define columns to be displayed -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+
+</div>
+
+<mat-paginator class="paginator" [length]="currentExistingData.length" [pageSize]="8"
+    (page)="OnPageChange($event)"></mat-paginator>
+
+
+<img id="adminimg" src="../../assets/images/admin.jpg">
+
+
+<footer>
+    <p>&copy; 2024 Admin Panel. All rights reserved.</p>
+</footer>

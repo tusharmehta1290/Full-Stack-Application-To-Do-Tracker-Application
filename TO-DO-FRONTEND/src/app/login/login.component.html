@@ -1,0 +1,43 @@
+<mat-card class="login-container">
+
+    <div  id="image-area">
+        <img src="../../assets/images/login img.jpg" alt="Logo" class="logo">
+    </div>
+
+    <div class="login-form">
+
+        <span id="heading">Login</span>
+
+            <form (ngSubmit)="onSubmit(loginform)" #loginform="ngForm">
+                <mat-form-field class="full-width">
+                    <input [(ngModel)]="existingUser.emailId" matInput type="email" placeholder="Email" required email name="eId" #emailId="ngModel">
+
+                    <mat-error *ngIf="emailId.touched && emailId.invalid && !emailId.dirty">
+                        Email is Required Field
+                    </mat-error>
+
+                    <mat-error *ngIf="emailId.dirty && emailId.invalid">
+                        Please Enter A valid Email Address
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input [(ngModel)]="existingUser.password" matInput type="password" placeholder="Password" minlength="6" required  name="psswd" #password="ngModel">
+
+                    <mat-error *ngIf="password.errors?.['required'] && password.touched">
+                        Password is required field
+                    </mat-error>
+
+                    <mat-error *ngIf="password.errors?.['minlength'] && password.touched">
+                        Password should include minimum 6 characters
+                    </mat-error>
+
+                </mat-form-field>
+                <div></div>
+
+                <button id="loginbtn" mat-raised-button color="primary" type="submit" [disabled]="(loginform.invalid)">Login</button>
+            </form>
+            <a id="linktosignup" routerLink="/signup">Not Registered. Click here to signup</a>
+    </div>
+</mat-card>

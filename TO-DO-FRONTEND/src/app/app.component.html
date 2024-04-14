@@ -1,0 +1,6 @@
+<app-header *ngIf="!_loginservice.isloggedIn() && !isAdminRoute()"></app-header> 
+<router-outlet></router-outlet>
+<app-footer *ngIf="!_loginservice.isloggedIn() && !isAdminRoute()"></app-footer>
+
+
+

@@ -1,0 +1,113 @@
+<div class="container">
+
+    <mat-toolbar id="header" color="primary">
+        <span id="header-title">Todo Dashboard</span>
+
+        <mat-form-field class="search-bar">
+            <input matInput placeholder="Search....">
+            <button mat-button matSuffix>
+                <mat-icon>search</mat-icon>
+            </button>
+            <button mat-button matSuffix>
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <div class="tasktype">
+            <button mat-button>Primary Task</button>
+            <button mat-button routerLink="/secretcode">Secret Task</button>
+            <button mat-fab class="chart-button" color="primary">
+                <mat-icon id="icon-c">bar_chart</mat-icon>
+            </button>
+            <button mat-button>Logout</button>
+        </div>
+    </mat-toolbar>
+
+    <div class="filtercontainer">
+        <mat-chip-listbox aria-label="Categories">
+            <mat-chip-option class="chip" (click)="navigatetodashboard()">All</mat-chip-option>
+            <mat-chip-option class="chip" (click)="filterTasksByPriority('High')">High</mat-chip-option>
+            <mat-chip-option class="chip" (click)="filterTasksByPriority('Medium')">Medium</mat-chip-option>
+            <mat-chip-option class="chip" (click)="filterTasksByPriority('Low')">Low</mat-chip-option>
+        </mat-chip-listbox>
+    </div>
+
+    <div *ngIf="selectedPriority === 'High'">
+        <div class="task-container">
+            <mat-card *ngFor="let task of HighPriTasks" class="task-card">
+
+                <mat-card-header>
+                    <mat-card-title class="tasktitle">{{ task.taskName }}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p id="task-desc">{{ task.taskDescription }}</p>
+                </mat-card-content>
+                <div class="task-meta" *ngIf="task.completionDate != '' || task.priority != '' ">
+                    <p id="enddate">End Date : <span>{{ task.completionDate }}</span></p>
+                    <p>Priority : <span
+                            [ngClass]="{'priority-low': task.priority === 'Low', 'priority-medium': task.priority === 'Medium', 'priority-high': task.priority === 'High'}">{{
+                            task.priority }}</span></p>
+                    <p>Completion Status: <span
+                            [ngClass]="{'completed': task.isCompleted === 'Yes', 'not-completed': task.isCompleted === 'No'}">{{
+                            task.isCompleted }}</span></p>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div *ngIf="selectedPriority === 'Medium'">
+        <div class="task-container">
+            <mat-card *ngFor="let task of mediumpritasks" class="task-card">
+
+                <mat-card-header>
+                    <mat-card-title class="tasktitle">{{ task.taskName }}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p id="task-desc">{{ task.taskDescription }}</p>
+                </mat-card-content>
+                <div class="task-meta" *ngIf="task.completionDate != '' || task.priority != '' ">
+                    <p id="enddate">End Date : <span>{{ task.completionDate }}</span></p>
+                    <p>Priority : <span
+                            [ngClass]="{'priority-low': task.priority === 'Low', 'priority-medium': task.priority === 'Medium', 'priority-high': task.priority === 'High'}">{{
+                            task.priority }}</span></p>
+                    <p>Completion Status: <span
+                            [ngClass]="{'completed': task.isCompleted === 'Yes', 'not-completed': task.isCompleted === 'No'}">{{
+                            task.isCompleted }}</span></p>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div *ngIf="selectedPriority === 'Low'">
+        <div class="task-container">
+            <mat-card *ngFor="let task of lowpritasks" class="task-card">
+
+                <mat-card-header>
+                    <mat-card-title class="tasktitle">{{ task.taskName }}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p id="task-desc">{{ task.taskDescription }}</p>
+                </mat-card-content>
+                <div class="task-meta" *ngIf="task.completionDate != '' || task.priority != '' ">
+                    <p id="enddate">End Date : <span>{{ task.completionDate }}</span></p>
+                    <p>Priority : <span
+                            [ngClass]="{'priority-low': task.priority === 'Low', 'priority-medium': task.priority === 'Medium', 'priority-high': task.priority === 'High'}">{{
+                            task.priority }}</span></p>
+                    <p>Completion Status: <span
+                            [ngClass]="{'completed': task.isCompleted === 'Yes', 'not-completed': task.isCompleted === 'No'}">{{
+                            task.isCompleted }}</span></p>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="branding">To-Do Tracker</div>
+    </div>
+
+    <app-button></app-button>
+
+</div>

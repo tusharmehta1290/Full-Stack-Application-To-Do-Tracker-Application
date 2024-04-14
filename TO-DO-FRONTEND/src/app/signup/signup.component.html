@@ -1,0 +1,76 @@
+<mat-card class="signup-container">
+
+    <div  id="image-area">
+        <img src="../../assets/images/Signup img.jpg" alt="Logo" class="logo">
+    </div>
+
+    <div class="signup-form">
+
+        <span id="heading">Sign Up</span>
+
+            <form (ngSubmit)="onSubmit(signupform)" #signupform="ngForm">
+                <mat-form-field class="full-width">
+                    <input  [(ngModel)]="newUser.userName" name="uName" #userName="ngModel" class="width" matInput placeholder="Full Name" minlength="5" maxlength="20" required>
+
+                    <mat-error *ngIf="userName.errors?.['required'] && userName.touched">
+                        Full Name is required
+                    </mat-error>
+
+                    <mat-error *ngIf="userName.errors?.['minlength'] && userName.touched">
+                        Full Name minimum length is {{ userName.errors?.['minlength']?.requiredLength}}
+                    </mat-error>
+
+                    <mat-error *ngIf="userName.errors?.['maxlength'] && userName.touched">
+                        Full Name maximum length is {{ userName.errors?.['maxlength']?.requiredLength}}
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input [(ngModel)]="newUser.emailId" name="eId"  #emailId="ngModel" class="width" matInput type="email" placeholder="Email" required email>
+
+                    <mat-error *ngIf="emailId.touched && emailId.invalid && !emailId.dirty">
+                        Email is Required Field
+                    </mat-error>
+
+                    <mat-error *ngIf="emailId.dirty && emailId.invalid">
+                        Please Enter A valid Email Address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input [(ngModel)]="newUser.secretPassword" name="seccode" #secretcode="ngModel" class="width" matInput placeholder="Enter your Secret Code" minlength="5" maxlength="20" required>
+
+                    <mat-error *ngIf="secretcode.touched && secretcode.invalid && !secretcode.dirty">
+                        SecretCode is Required Field
+                    </mat-error>
+
+                    <mat-error *ngIf="secretcode.errors?.['minlength'] && secretcode.touched">
+                        SecretCode minimum length is {{ secretcode.errors?.['minlength']?.requiredLength}}
+                    </mat-error>
+
+                    <mat-error *ngIf="secretcode.errors?.['maxlength'] && secretcode.touched">
+                        SecretCode maximum length is {{ secretcode.errors?.['maxlength']?.requiredLength}}
+                    </mat-error>
+
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input [(ngModel)]="newUser.password" name="pswd"  #password="ngModel" class="width" matInput type="password" placeholder="Password" pattern="^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?/~\\-])\S{6,}$" required>
+
+                    <mat-error *ngIf="password.errors?.['required'] && password.touched">
+                        Password is required field
+                    </mat-error>
+
+                    <mat-error *ngIf="password.errors?.['pattern'] && password.touched && password.dirty">
+                        Please Enter a password with atleast 6 characters & include a special character
+                    </mat-error>
+                </mat-form-field>
+
+                <button id="signupbtn" mat-raised-button color="primary" type="submit" [disabled]="(signupform.invalid)">Sign Up</button>
+
+                <mat-spinner id="spinner" diameter="300" *ngIf="isLoading"></mat-spinner>
+            </form>
+            <a id="linktologin" routerLink="/login">Already a User? Click here to Login</a>
+    </div>
+</mat-card>
